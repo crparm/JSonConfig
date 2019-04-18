@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "JSonConfig": {
+      "commandName": "Project",
+      "commandLineArgs": "./sample.json ./ dev"
+    }
+  }
+}

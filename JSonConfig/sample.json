@@ -1,0 +1,91 @@
+{
+  "Templates": [
+    {
+      "Name": "Lambda1",
+      "Data": {
+        "Type": "AWS::Lambda::Function",
+        "Properties": {
+          "Code": "Code",
+          "DeadLetterConfig": "%%region%%",
+          "Description": "String",
+          "Environment": "Environment",
+          "FunctionName": "String",
+          "Handler": "String",
+          "KmsKeyArn": "String",
+          "Layers": [ "String", "..." ],
+          "MemorySize": "Integer",
+          "ReservedConcurrentExecutions": "Integer",
+          "Role": "String",
+          "Runtime": "String",
+          "Timeout": "Integer",
+          "TracingConfig": "TracingConfig",
+          "VpcConfig": "VPCConfig",
+          "Tags": [ "Resource", "Tag", "..." ]
+        }
+      }
+    },
+    {
+      "Name": "Lambda2",
+      "Inherits": [ "Lambda1" ],
+      "Data": {
+        "Type": "AWS::Lambda::Function",
+        "Properties": {
+          "Code": "Code",
+          "DeadLetterConfig": "DeadLetterConfig",
+          "Description": "String",
+          "Environment": "Environment",
+          "FunctionName": "%%region%%",
+          "Handler": "String",
+          "KmsKeyArn": "String",
+          "Layers": [ "String", "..." ],
+          "MemorySize": "Integer",
+          "ReservedConcurrentExecutions": "Integer",
+          "Role": "String",
+          "Runtime": "String",
+          "Timeout": "Integer",
+          "TracingConfig": "TracingConfig",
+          "VpcConfig": "VPCConfig",
+          "Tags": [ "Resource", "Tag", "..." ]
+        }
+      }
+    }
+  ],
+  "Configs": [
+    {
+      "Name": "Lambda1",
+      "Template": "Lambda2",
+      "ApplyVariableSet": [ "DefaultSet" ],
+      "VariableSet": {
+          "default": {
+            "region": "us-east1"
+          },
+          "dev": {
+            "region": "us-east2"
+          },
+          "uat": {
+            "region": "us-east1"
+          },
+          "prod": {
+            "region": "us-east1"
+          }
+        }
+    }
+  ],
+  "VariableSets": [
+    {
+      "Name": "DefaultSet",
+      "default": {
+        "region": "us-east1"
+      },
+      "dev": {
+        "region": "us-east1"
+      },
+      "uat": {
+        "region": "us-east1"
+      },
+      "prod": {
+        "region": "us-east1"
+      }
+    }
+  ]
+}
